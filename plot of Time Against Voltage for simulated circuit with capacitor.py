@@ -13,10 +13,12 @@ from scipy.optimize import curve_fit as cv
 
 data = np.genfromtxt("Draft4.txt",skip_header =3,delimiter="\t")
 
+print(data)
 time=data[:, 0]
 V_out=data[:,1]
 
 def func(x, b):
+    #we know V0 is o.5 so only have program find b in the function
     return 0.5*np.exp(-b * x)
 
 popt1, pcov1 = cv(func, time, V_out)
@@ -29,7 +31,7 @@ bVal1= str(round(popt1[0],3))
 
 
 
-eq1 = " EXP(-" + bVal1 + "x)"
+eq1 = " 0.5 * EXP(-" + bVal1 + "x)"
 
 
 plt.xlabel("Time / s")
