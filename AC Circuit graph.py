@@ -22,10 +22,11 @@ V_in=data[:,1]
 
 plt.xlabel("Time / s")
 plt.ylabel("Voltage / V")
+"""
 plt.plot(time,V_out, "r", label = "V_out")
 plt.plot(time,V_in, "b", label = "V_in")
-plt.title("AC output for V_in and V_out against time")
-plt.legend()
+"""
+
 
 def findfirstmax (array):
     count=0
@@ -47,5 +48,13 @@ def findphasediff (count1, count2):
     return phase
 print(round(findphasediff(findfirstmax(V_out),findfirstmax(V_in)), 5))
 
-print(findfirstmax2(V_out))
-print(findfirstmax2(V_in))
+x= lambda x1, x2 : (x1-x2)
+
+phase=[]
+for i in range (len(V_in)):
+    phase.append(x(V_in[i], V_out[i]))
+    
+
+plt.plot(time,phase,"black", label="phase")
+plt.title("Phase between V_in and V_out for AC")
+plt.legend()
