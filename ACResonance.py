@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit as cv
 #Import the data from the Text File
 
-#This is inefficiant, i dont care because its 4am
+#This is inefficiant, i dont care
 data10k = np.genfromtxt("ACresonance10kNew.txt",skip_header =3,delimiter=",")
 
 frequency=data10k[:, 0]
