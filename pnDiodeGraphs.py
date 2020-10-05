@@ -7,7 +7,7 @@ This is a temporary script file.
 
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.optimise import curve_fit as cf
+from scipy.optimize import curve_fit as cf
 
 #for graph 1 enter data here
 voltage_forward = []
