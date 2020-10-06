@@ -10,39 +10,33 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit as cf
 
 #for graph 1 enter data here
-voltage_forward = []
-current_forward = []
+voltage_forward = [0.19,0.24,0.28,0.36,0.42]
+current_forward = [0.0002,0.001,0.0042,0.0346,0.0870]
 
 #for graph 2 enter data here
-voltage_backwards = []
-current_backwards = []
+voltage_backwards = [8.94,12.12,14.98,16.83,18.00,20.00]
+current_backwards = [0.20*10**(-6),1.44*10**(-6),1.77*10**(-6),1.98*10**(-6),2.10*10**(-6),2.33*10**(-6)]
 
-plt.xlabel("Current / A")
-plt.ylabel("Voltage / V")
+
+
+plt.ylabel("Current / A")
+plt.xlabel("Voltage / V")
 
 #plot first graph
-"""
-plt.xscale("log")
-plt.yscale("log")
-plt.plot (voltage_forward,current_forward, "b")
-plt.title("Forward Bias; Voltage against Current")
 
-"""
+plt.yscale("log")
+plt.plot(voltage_forward, current_forward, "b")
+plt.title("Forward Bias; Current against Voltage for Shottky Diode")
+
+
 #plot second graph
-"""
-plt.xscale("log")
-plt.yscale("log")
-plt.plot (voltage_backwards,current_backwards, "r")
-plt.title("Reverse Bias; Voltage against Current")
-"""
 
-q=0
-k = 1.380649*(10**(-23))
+"""
+plt.plot (voltage_backwards,current_backwards, "r")
+plt.title("Reverse Bias; Voltage against Current for shottky")
+"""
 
 #use to find I_s and T from graph 1
-def predictedFunc1 (I_s, T):
-    return I_s * np.exp((q*voltage_forward)/(k*T))
-
-popt1, pcov1 = cf(predictedFunc1, current_forward, voltage_forward)
-
-print(popt1)
+lncurrent=[]
+for i in range (len(current_forward)):
+    lncurrent.append(np.log(current_forward[i]))
